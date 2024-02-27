@@ -1,0 +1,18 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+body #map {
+  width: 90%;
+  height: 20rem;
+  border: 1px solid #ccc;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+body #form form {
+  text-align: center;
+  margin: 2rem auto;
+}/*# sourceMappingURL=style.css.map */
