@@ -1,15 +1,15 @@
 // Code goes here!
 import axios from "axios";
+import { GOOGLE_API_KEY } from "./env";
 
 
 const form = document.querySelector("form")!;
 const addressInput = document.querySelector("#address")! as HTMLInputElement;
-const GOOGLE_API_KEY = "AIzaSyBBqqCCzkKOowVZpJdMNzaBN1uA5c0k1Ho";
 
 
 type GoogleGeocodingResponse = {
-  results: { geometry: { location: { lat: number; lng: number } } }[];
-  status: "OK" | "ZERO_RESULTS";
+    results: { geometry: { location: { lat: number; lng: number } } }[];
+    status: "OK" | "ZERO_RESULTS";
 };
 
 const searchAddressHandler = (e: Event) => {
