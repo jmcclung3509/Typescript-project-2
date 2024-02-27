@@ -1,11 +1,18 @@
 // Code goes here!
 import axios from "axios";
-import { GOOGLE_API_KEY } from "./env";
+
+
+
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
 
 
 const form = document.querySelector("form")!;
 const addressInput = document.querySelector("#address")! as HTMLInputElement;
 
+const script = document.createElement("script");
+script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`;
+script.async = true;
+document.head.appendChild(script);
 
 type GoogleGeocodingResponse = {
     results: { geometry: { location: { lat: number; lng: number } } }[];
@@ -19,11 +26,11 @@ const searchAddressHandler = (e: Event) => {
 
   //send to google API
   axios
-    .get<GoogleGeocodingResponse>(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
-        enteredAddress
-      )}&key=${GOOGLE_API_KEY}`
-    )
+  .get<GoogleGeocodingResponse>(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
+      enteredAddress
+    )}&key=${GOOGLE_API_KEY}`
+  )
     .then((response) => {
       console.log(response);
       if (response.data.status !== "OK") {
@@ -31,6 +38,7 @@ const searchAddressHandler = (e: Event) => {
       }
 
       const location = response.data.results[0].geometry.location;
+      console.log(location)
 
       const map = new google.maps.Map(document.getElementById("map")!, {
         center: location,
@@ -40,7 +48,7 @@ const searchAddressHandler = (e: Event) => {
     })
     .catch((err) => {
       alert(err.message);
-      console.log(err);
+      console.log(err, 'ERROR');
     });
 };
 

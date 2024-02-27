@@ -1,4 +1,8 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const Stream = require('stream-browserify');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   mode: 'development',
@@ -24,7 +28,26 @@ module.exports = {
       }
     ]
   },
+  plugins:[
+    new Dotenv(),
+    new HtmlWebpackPlugin({
+      template: './index.html', // Path to your HTML template
+      filename: 'index.html', // Output filename
+      inject: 'body', // Inject scripts into the body of the HTML file
+    }),
+  ],
+  
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    fallback: {
+      buffer: require.resolve('buffer/'),
+      path: require.resolve("path-browserify"),
+      os: require.resolve("os-browserify/browser"),
+      crypto: require.resolve("crypto-browserify"),
+      stream: require.resolve("stream-browserify") 
+
+  
+   
+    },
   }
 };
