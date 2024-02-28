@@ -4,6 +4,7 @@ const Stream = require('stream-browserify');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
+
 module.exports = {
   mode: 'development',
   entry: './src/app.ts',
@@ -29,7 +30,10 @@ module.exports = {
     ]
   },
   plugins:[
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(__dirname, '.env'),
+      systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
+    }),
     new HtmlWebpackPlugin({
       template: './index.html', // Path to your HTML template
       filename: 'index.html', // Output filename

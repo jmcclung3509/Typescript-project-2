@@ -2,7 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require('webpack');
-const Dotenv = require('dotenv');
+const Dotenv = require('dotenv')
+
+
+
 
 module.exports = {
   mode: "production",
@@ -30,6 +33,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new Dotenv({
+        path: path.resolve(__dirname, '.env'),
       systemvars: true, // Load environment variables from `process.env`
     }),
     new webpack.DefinePlugin({
