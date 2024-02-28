@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const Dotenv = require('dotenv-webpack');
+
 
 module.exports = {
   mode: "production",
@@ -28,9 +28,7 @@ module.exports = {
   devtool: "eval-source-map",
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv({
-        safe: false,
-    }),
+
     new HtmlWebpackPlugin({
       template: './index.html', // Path to your HTML template
       filename: 'index.html', // Output filename
