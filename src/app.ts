@@ -2,8 +2,7 @@
 import axios from "axios";
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
-console.log(GOOGLE_API_KEY);
-console.log(process.env);
+
 
 const form = document.querySelector("form")!;
 const addressInput = document.querySelector("#address")! as HTMLInputElement;
