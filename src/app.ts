@@ -1,9 +1,5 @@
 // Code goes here!
 import axios from "axios";
-import 'dotenv/config';
-
-
-
 
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
