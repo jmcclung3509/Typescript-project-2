@@ -4,6 +4,7 @@ import axios from "axios";
 
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
+console.log(GOOGLE_API_KEY)
 
 
 const form = document.querySelector("form")!;
