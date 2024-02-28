@@ -3,15 +3,15 @@ import axios from "axios";
 
 
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
-console.log(GOOGLE_API_KEY)
+console.log(process.env.GOOGLE_API_KEY)
+
 
 
 const form = document.querySelector("form")!;
 const addressInput = document.querySelector("#address")! as HTMLInputElement;
 
 const script = document.createElement("script");
-script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}`;
 script.async = true;
 document.head.appendChild(script);
 
@@ -30,7 +30,7 @@ const searchAddressHandler = (e: Event) => {
   .get<GoogleGeocodingResponse>(
     `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
       enteredAddress
-    )}&key=${GOOGLE_API_KEY}`
+    )}&key=${process.env.GOOGLE_API_KEY}`
   )
     .then((response) => {
       console.log(response);
