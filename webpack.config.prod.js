@@ -28,7 +28,9 @@ module.exports = {
   devtool: "eval-source-map",
   plugins: [
     new CleanWebpackPlugin(),
-    new Dotenv(),
+    new Dotenv({
+        safe: false,
+    }),
     new HtmlWebpackPlugin({
       template: './index.html', // Path to your HTML template
       filename: 'index.html', // Output filename
